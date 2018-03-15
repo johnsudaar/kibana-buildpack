@@ -162,6 +162,12 @@ echo "Boot failed: \$exitproc"
 exit 1
 SH
 
+
+if [ -f "$BUILD_DIR/kibana-extra.yml" ] ; then
+  echo "-----> Adding extra kibana.yml configuration"
+  cat $BUILD_DIR/kibana-extra.yml >> $KIBANA_BASE_DIR/config/kibana.yml
+fi
+
 chmod +x "${KIBANA_DIR}/bin/kibana"
 
 echo "Exporting PATH" | indent
